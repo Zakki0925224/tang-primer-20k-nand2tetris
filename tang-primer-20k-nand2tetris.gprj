@@ -1,0 +1,23 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
+    <FileList>
+        <File path="src/and.v" type="file.verilog" enable="1"/>
+        <File path="src/and16.v" type="file.verilog" enable="1"/>
+        <File path="src/dmux.v" type="file.verilog" enable="1"/>
+        <File path="src/mux.v" type="file.verilog" enable="1"/>
+        <File path="src/mux16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand.v" type="file.verilog" enable="1"/>
+        <File path="src/not.v" type="file.verilog" enable="1"/>
+        <File path="src/not16.v" type="file.verilog" enable="1"/>
+        <File path="src/or.v" type="file.verilog" enable="1"/>
+        <File path="src/or16.v" type="file.verilog" enable="1"/>
+        <File path="src/or8way.v" type="file.verilog" enable="1"/>
+        <File path="src/top.v" type="file.verilog" enable="1"/>
+        <File path="src/xor.v" type="file.verilog" enable="1"/>
+        <File path="src/tang-primer-20k-nand2tetris.sdc" type="file.sdc" enable="1"/>
+    </FileList>
+</Project>
