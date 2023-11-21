@@ -8,8 +8,12 @@
         <File path="src/and.v" type="file.verilog" enable="1"/>
         <File path="src/and16.v" type="file.verilog" enable="1"/>
         <File path="src/dmux.v" type="file.verilog" enable="1"/>
+        <File path="src/dmux4way.v" type="file.verilog" enable="1"/>
+        <File path="src/dmux8way.v" type="file.verilog" enable="1"/>
         <File path="src/mux.v" type="file.verilog" enable="1"/>
         <File path="src/mux16.v" type="file.verilog" enable="1"/>
+        <File path="src/mux4way16.v" type="file.verilog" enable="1"/>
+        <File path="src/mux8way16.v" type="file.verilog" enable="1"/>
         <File path="src/nand.v" type="file.verilog" enable="1"/>
         <File path="src/not.v" type="file.verilog" enable="1"/>
         <File path="src/not16.v" type="file.verilog" enable="1"/>
@@ -18,6 +22,5 @@
         <File path="src/or8way.v" type="file.verilog" enable="1"/>
         <File path="src/top.v" type="file.verilog" enable="1"/>
         <File path="src/xor.v" type="file.verilog" enable="1"/>
-        <File path="src/tang-primer-20k-nand2tetris.sdc" type="file.sdc" enable="1"/>
     </FileList>
 </Project>

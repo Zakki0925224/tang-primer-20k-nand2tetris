@@ -1,7 +1,9 @@
+`default_nettype none
+
 module _xor(
-    input a,
-    input b,
-    output out
+    input wire a,
+    input wire b,
+    output wire out
 );
     wire nand_ab, nand_aab, nand_abb;
 
@@ -29,3 +31,5 @@ module _xor(
         .out(out)
     );
 endmodule
+
+`default_nettype wire

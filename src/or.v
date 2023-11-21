@@ -1,7 +1,9 @@
+`default_nettype none
+
 module _or(
-    input a,
-    input b,
-    output out
+    input wire a,
+    input wire b,
+    output wire out
 );
     wire nand_a, nand_b;
 
@@ -23,3 +25,5 @@ module _or(
         .out(out)
     );
 endmodule
+
+`default_nettype wire

@@ -1,6 +1,8 @@
+`default_nettype none
+
 module _not(
-    input in,
-    output out
+    input wire in,
+    output wire out
 );
     _nand nand_gate(
         .a(in),
@@ -8,3 +10,5 @@ module _not(
         .out(out)
     );
 endmodule
+
+`default_nettype wire

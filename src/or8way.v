@@ -1,6 +1,8 @@
+`default_nettype none
+
 module or8way(
     input wire[7:0] in,
-    output out
+    output wire out
 );
     wire or_01, or_23, or_45, or_67, or_0123, or_4567;
 
@@ -46,3 +48,5 @@ module or8way(
         .out(out)
     );
 endmodule
+
+`default_nettype wire

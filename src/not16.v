@@ -1,3 +1,5 @@
+`default_nettype none
+
 module not16(
     input wire[15:0] in,
     output wire[15:0] out
@@ -7,3 +9,5 @@ module not16(
         .out(out)
     );
 endmodule
+
+`default_nettype wire

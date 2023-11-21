@@ -1,8 +1,10 @@
+`default_nettype none
+
 module mux(
-    input a,
-    input b,
-    input sel,
-    output out
+    input wire a,
+    input wire b,
+    input wire sel,
+    output wire out
 );
     wire and_bsel, not_sel, and_anotsel;
 
@@ -29,3 +31,5 @@ module mux(
         .out(out)
     );
 endmodule
+
+`default_nettype wire

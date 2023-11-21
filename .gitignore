@@ -1,2 +1,4 @@
 impl
 tang-primer-20k-nand2tetris.gprj.user
+*.vcd
+bin

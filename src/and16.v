@@ -1,3 +1,5 @@
+`default_nettype none
+
 module and16(
     input wire[15:0] a,
     input wire[15:0] b,
@@ -9,3 +11,5 @@ module and16(
         .out(out)
     );
 endmodule
+
+`default_nettype wire

@@ -1,8 +1,10 @@
+`default_nettype none
+
 module dmux(
-    input in,
-    input sel,
-    output a,
-    output b
+    input wire in,
+    input wire sel,
+    output wire a,
+    output wire b
 );
     wire nand_insel, nand_innandinsel;
 
@@ -30,3 +32,5 @@ module dmux(
         .out(b)
     );
 endmodule
+
+`default_nettype wire
