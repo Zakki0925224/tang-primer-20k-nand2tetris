@@ -5,11 +5,16 @@
     <Version>5</Version>
     <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
     <FileList>
+        <File path="src/add16.v" type="file.verilog" enable="1"/>
+        <File path="src/alu.v" type="file.verilog" enable="1"/>
         <File path="src/and.v" type="file.verilog" enable="1"/>
         <File path="src/and16.v" type="file.verilog" enable="1"/>
         <File path="src/dmux.v" type="file.verilog" enable="1"/>
         <File path="src/dmux4way.v" type="file.verilog" enable="1"/>
         <File path="src/dmux8way.v" type="file.verilog" enable="1"/>
+        <File path="src/full_addr.v" type="file.verilog" enable="1"/>
+        <File path="src/half_addr.v" type="file.verilog" enable="1"/>
+        <File path="src/inc16.v" type="file.verilog" enable="1"/>
         <File path="src/mux.v" type="file.verilog" enable="1"/>
         <File path="src/mux16.v" type="file.verilog" enable="1"/>
         <File path="src/mux4way16.v" type="file.verilog" enable="1"/>
