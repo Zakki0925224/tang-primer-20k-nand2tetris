@@ -9,6 +9,7 @@
         <File path="src/alu.v" type="file.verilog" enable="1"/>
         <File path="src/and.v" type="file.verilog" enable="1"/>
         <File path="src/and16.v" type="file.verilog" enable="1"/>
+        <File path="src/bit.v" type="file.verilog" enable="1"/>
         <File path="src/dmux.v" type="file.verilog" enable="1"/>
         <File path="src/dmux4way.v" type="file.verilog" enable="1"/>
         <File path="src/dmux8way.v" type="file.verilog" enable="1"/>
@@ -25,6 +26,8 @@
         <File path="src/or.v" type="file.verilog" enable="1"/>
         <File path="src/or16.v" type="file.verilog" enable="1"/>
         <File path="src/or8way.v" type="file.verilog" enable="1"/>
+        <File path="src/ram8.v" type="file.verilog" enable="1"/>
+        <File path="src/reg16.v" type="file.verilog" enable="1"/>
         <File path="src/top.v" type="file.verilog" enable="1"/>
         <File path="src/xor.v" type="file.verilog" enable="1"/>
     </FileList>
