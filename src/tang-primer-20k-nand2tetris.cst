@@ -5,9 +5,11 @@
 //Part Number: GW2A-LV18PG256C8/I7
 //Device: GW2A-18
 //Device Version: C
-//Created Time: Sun 11 26 12:51:57 2023
+//Created Time: Sun 11 26 16:51:58 2023
 
 IO_LOC "txp" M11;
 IO_PORT "txp" PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "reset" T10;
+IO_PORT "reset" PULL_MODE=UP BANK_VCCIO=1.8;
 IO_LOC "clk" H11;
 IO_PORT "clk" PULL_MODE=UP BANK_VCCIO=1.8;

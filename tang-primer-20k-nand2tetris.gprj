@@ -5,33 +5,36 @@
     <Version>5</Version>
     <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
     <FileList>
-        <File path="src/add16.v" type="file.verilog" enable="1"/>
-        <File path="src/alu.v" type="file.verilog" enable="1"/>
-        <File path="src/and.v" type="file.verilog" enable="1"/>
-        <File path="src/and16.v" type="file.verilog" enable="1"/>
-        <File path="src/bit.v" type="file.verilog" enable="1"/>
-        <File path="src/dev/uart.v" type="file.verilog" enable="1"/>
-        <File path="src/dmux.v" type="file.verilog" enable="1"/>
-        <File path="src/dmux4way.v" type="file.verilog" enable="1"/>
-        <File path="src/dmux8way.v" type="file.verilog" enable="1"/>
-        <File path="src/full_addr.v" type="file.verilog" enable="1"/>
-        <File path="src/half_addr.v" type="file.verilog" enable="1"/>
-        <File path="src/inc16.v" type="file.verilog" enable="1"/>
-        <File path="src/mux.v" type="file.verilog" enable="1"/>
-        <File path="src/mux16.v" type="file.verilog" enable="1"/>
-        <File path="src/mux4way16.v" type="file.verilog" enable="1"/>
-        <File path="src/mux8way16.v" type="file.verilog" enable="1"/>
-        <File path="src/nand.v" type="file.verilog" enable="1"/>
-        <File path="src/not.v" type="file.verilog" enable="1"/>
-        <File path="src/not16.v" type="file.verilog" enable="1"/>
-        <File path="src/or.v" type="file.verilog" enable="1"/>
-        <File path="src/or16.v" type="file.verilog" enable="1"/>
-        <File path="src/or8way.v" type="file.verilog" enable="1"/>
-        <File path="src/pc.v" type="file.verilog" enable="1"/>
-        <File path="src/ram2k.v" type="file.verilog" enable="1"/>
-        <File path="src/reg16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/add16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/alu.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/and.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/and16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/bit.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/computer.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/cpu.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/dmux.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/dmux4way.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/dmux8way.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/full_addr.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/half_addr.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/inc16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/mux.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/mux16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/mux4way16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/mux8way16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/nand.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/not.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/not16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/or.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/or16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/or8way.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/pc.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/ram2k.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/reg16.v" type="file.verilog" enable="1"/>
+        <File path="src/nand2tetris/xor.v" type="file.verilog" enable="1"/>
+        <File path="src/timer.v" type="file.verilog" enable="1"/>
         <File path="src/top.v" type="file.verilog" enable="1"/>
-        <File path="src/xor.v" type="file.verilog" enable="1"/>
+        <File path="src/uart.v" type="file.verilog" enable="1"/>
         <File path="src/tang-primer-20k-nand2tetris.cst" type="file.cst" enable="1"/>
     </FileList>
 </Project>
