@@ -1,81 +1,89 @@
 `default_nettype none
 
-module ram8(
+module ram64(
     input wire clk,
     input wire[15:0] in,
-    input wire[2:0] address,
+    input wire[5:0] address,
     input wire load,
     output wire[15:0] out
 );
-    wire a, b, c, d, e, f, g, h;
+    wire load_a, load_b, load_c, load_d, load_e, load_f, load_g, load_h;
     wire out_a, out_b, out_c, out_d, out_e, out_f, out_g, out_h;
 
     dmux8way dmux_load(
         .in(load),
-        .sel(address),
-        .a(a),
-        .b(b),
-        .c(c),
-        .d(d),
-        .e(e),
-        .f(f),
-        .g(g),
-        .h(h)
+        .sel(address[5:3]),
+        .a(load_a),
+        .b(load_b),
+        .c(load_c),
+        .d(load_d),
+        .e(load_e),
+        .f(load_f),
+        .g(load_g),
+        .h(load_h)
     );
 
-    reg16 reg_0(
+    ram8 ram8_0(
         .clk(clk),
         .in(in),
-        .load(a),
+        .address(address[2:0]),
+        .load(load_a),
         .out(out_a)
     );
 
-    reg16 reg_1(
+    ram8 ram8_1(
         .clk(clk),
         .in(in),
-        .load(b),
+        .address(address[2:0]),
+        .load(load_b),
         .out(out_b)
     );
 
-    reg16 reg_2(
+    ram8 ram8_2(
         .clk(clk),
         .in(in),
-        .load(c),
+        .address(address[2:0]),
+        .load(load_c),
         .out(out_c)
     );
 
-    reg16 reg_3(
+    ram8 ram8_3(
         .clk(clk),
         .in(in),
-        .load(d),
+        .address(address[2:0]),
+        .load(load_d),
         .out(out_d)
     );
 
-    reg16 reg_4(
+    ram8 ram8_4(
         .clk(clk),
         .in(in),
-        .load(e),
+        .address(address[2:0]),
+        .load(load_e),
         .out(out_e)
     );
 
-    reg16 reg_5(
+    ram8 ram8_5(
         .clk(clk),
         .in(in),
-        .load(f),
+        .address(address[2:0]),
+        .load(load_f),
         .out(out_f)
     );
 
-    reg16 reg_6(
+    ram8 ram8_6(
         .clk(clk),
         .in(in),
-        .load(g),
+        .address(address[2:0]),
+        .load(load_g),
         .out(out_g)
     );
 
-    reg16 reg_7(
+    ram8 ram8_7(
         .clk(clk),
         .in(in),
-        .load(h),
+        .address(address[2:0]),
+        .load(load_h),
         .out(out_h)
     );
 
@@ -88,9 +96,8 @@ module ram8(
         .f(out_f),
         .g(out_g),
         .h(out_h),
-        .sel(address),
+        .sel(address[5:3]),
         .out(out)
     );
 endmodule
-
 `default_nettype wire
