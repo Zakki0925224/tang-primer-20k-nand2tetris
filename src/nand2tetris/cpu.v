@@ -7,8 +7,8 @@ module cpu(
     input wire reset,
     output wire[15:0] out_mem,
     output wire write_mem,
-    output wire[14:0] address_mem,
-    output wire[14:0] pc
+    output wire[15:0] address_mem,
+    output wire[15:0] pc
 );
     wire is_a_inst;
     _not not_is_a_inst(
@@ -39,7 +39,7 @@ module cpu(
         .out(a_out)
     );
 
-    assign address_mem[14:0] = a_out[14:0];
+    assign address_mem = a_out;
 
     wire is_comp_a_on;
     wire[15:0] a_mem;
@@ -177,6 +177,6 @@ module cpu(
         .reset(reset),
         .out(pc_out)
     );
-    assign pc[14:0] = pc_out[14:0];
+    assign pc = pc_out;
 endmodule
 `default_nettype wire
