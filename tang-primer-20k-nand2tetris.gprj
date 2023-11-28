@@ -37,5 +37,6 @@
         <File path="src/top.v" type="file.verilog" enable="1"/>
         <File path="src/uart.v" type="file.verilog" enable="1"/>
         <File path="src/tang-primer-20k-nand2tetris.cst" type="file.cst" enable="1"/>
+        <File path="src/tang-primer-20k-nand2tetris.sdc" type="file.sdc" enable="1"/>
     </FileList>
 </Project>

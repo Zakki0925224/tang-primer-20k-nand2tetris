@@ -2,12 +2,12 @@
 
 module cpu(
     input wire clk,
-    input wire[15:0] in_mem,
+    input wire[15:0] in_m,
     input wire[15:0] inst,
     input wire reset,
-    output wire[15:0] out_mem,
-    output wire write_mem,
-    output wire[15:0] address_mem,
+    output wire[15:0] out_m,
+    output wire load_m,
+    output wire[15:0] address_m,
     output wire[15:0] pc
 );
     wire is_a_inst;
@@ -39,7 +39,7 @@ module cpu(
         .out(a_out)
     );
 
-    assign address_mem = a_out;
+    assign address_m = a_out;
 
     wire is_comp_a_on;
     wire[15:0] a_mem;
@@ -52,7 +52,7 @@ module cpu(
 
     mux16 mux16_a_mem(
         .a(a_out),
-        .b(in_mem),
+        .b(in_m),
         .sel(is_comp_a_on),
         .out(a_mem)
     );
@@ -73,7 +73,7 @@ module cpu(
         .ng(alu_out_is_nega)
     );
 
-    assign out_mem = alu_out;
+    assign out_m = alu_out;
 
     wire is_d_load;
     _and and_is_d_load(
@@ -89,10 +89,10 @@ module cpu(
         .out(d_out)
     );
 
-    _and and_write_mem(
+    _and and_load_m(
         .a(inst[15]),
         .b(inst[3]),
-        .out(write_mem)
+        .out(load_m)
     );
 
     wire is_positive, is_not_zero;

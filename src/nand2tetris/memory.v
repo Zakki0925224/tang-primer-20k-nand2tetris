@@ -24,6 +24,7 @@ module memory(
     // MMIO LED
     always @(posedge clk) begin
         if (address == 16'h4000 && load) reg_mmio_led <= in;
+        else reg_mmio_led <= reg_mmio_led;
     end
 
     assign mmio_led = reg_mmio_led;

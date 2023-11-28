@@ -10,10 +10,10 @@ module top(
     assign print_clk = clk;
     assign txp = uart_txp;
 
-    reg[14:0] debug_pc_old;
-    wire[14:0] debug_pc, debug_address_mem;
-    wire[15:0] debug_inst, debug_out_mem;
-    wire debug_write_mem;
+    reg[15:0] debug_pc_old = -1;
+    wire[15:0] debug_pc, debug_address_m;
+    wire[15:0] debug_inst, debug_out_m;
+    wire debug_load_m;
 
     wire[15:0] mmio_led;
 
@@ -22,22 +22,22 @@ module top(
         .reset(reset),
         .debug_pc(debug_pc),
         .debug_inst(debug_inst),
-        .debug_address_mem(debug_address_mem),
-        .debug_out_mem(debug_out_mem),
-        .debug_write_mem(debug_write_mem),
+        .debug_address_m(debug_address_m),
+        .debug_out_m(debug_out_m),
+        .debug_load_m(debug_load_m),
         .mmio_led(mmio_led)
     );
 
     always @(posedge clk) begin
-        if (debug_pc != debug_pc_old) begin
-            //`print(debug_address_mem, HEX);
-            `print(mmio_led, HEX);
-            //`print(" ", STR);
-            //debug_pc_old = debug_pc;
-        end
+        // if (debug_pc != debug_pc_old) begin
+        //     debug_pc_old <= debug_pc;
+        //     `print(debug_pc, HEX);
+        // end
+        // else debug_pc_old <= debug_pc_old;
+        `print(debug_pc, HEX);
     end
 
-    assign led = mmio_led[5:0];
+    assign led = ~mmio_led[5:0];
 endmodule
 
 `default_nettype wire
