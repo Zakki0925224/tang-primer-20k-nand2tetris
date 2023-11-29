@@ -2,5 +2,5 @@
 
 Work on Windows11.
 
--   iverilog, gtkwave (`scoop install iverilog`)
 -   GOWIN EDA
+-   Debug on VS Code with https://marketplace.visualstudio.com/items?itemName=yuyichao.digitaljs
