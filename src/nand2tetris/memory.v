@@ -10,6 +10,7 @@ module memory(
     reg[15:0] reg_mmio_led;
 
     wire ram_load;
+    wire[15:0] ram_out;
 
     assign ram_load = (address[14] == 1'b0 && load);
 
@@ -18,14 +19,21 @@ module memory(
         .in(in),
         .address(address[14:0]),
         .load(ram_load),
-        .out(out)
+        .out(ram_out)
     );
 
     // MMIO LED
     always @(posedge clk) begin
-        if (address == 16'h3fff && load) reg_mmio_led <= in;
-        else reg_mmio_led <= reg_mmio_led;
+        if (address == 16'h4000 && load)
+            reg_mmio_led <= in;
     end
+
+    mux16 mux16_out(
+        .a(ram_out),
+        .b(reg_mmio_led),
+        .sel(address[15]),
+        .out(out)
+    );
 
     assign mmio_led = reg_mmio_led;
 

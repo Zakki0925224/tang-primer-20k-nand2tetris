@@ -178,5 +178,56 @@ module cpu(
         .out(pc_out)
     );
     assign pc = pc_out;
+    // assign address_m = regA;
+    // wire loadI;
+    // wire loadA;
+    // wire loadD;
+    // assign out_m = outALU;
+    // wire [15:0] am;
+    // assign am = (inst[12]) ? in_m : regA;
+    // wire lt;
+    // wire eq;
+    // wire jmp;
+    // wire inc;
+    // wire [15:0] outALU;
+
+    // reg [15:0] regA;
+    // reg [15:0] regD;
+    // reg [15:0] pc_reg;
+    // assign pc = pc_reg;
+    // alu alu_(
+    //     .x(regD),
+    //     .y(am),
+    //     .zx(inst[11]),
+    //     .nx(inst[10]),
+    //     .zy(inst[9]),
+    //     .ny(inst[8]),
+    //     .f(inst[7]),
+    //     .no(inst[6]),
+    //     .out(outALU),
+    //     .zr(eq),
+    //     .ng(lt)
+    // );
+    // assign loadI = ~inst[15];
+    // assign loadA = inst[15] & inst[5];
+    // assign loadD = inst[15] & inst[4];
+    // assign load_m = inst[15] & inst[3];
+    // assign jmp = inst[15] & ((lt & inst[2]) | (eq & inst[1]) | ((!(lt|eq)) & inst[0]));
+
+    // always @(posedge clk)
+    //     if (reset) pc_reg <= 0;
+    //     else if (jmp) pc_reg <= regA;
+    //     else pc_reg <= pc_reg+1;
+
+    // always @(posedge clk)
+    //     if (reset) regA <= 0;
+    //     else if (loadI) regA <= inst;
+    //     else if (loadA) regA <= outALU;
+    //     else regA <= regA;
+
+    // always @(posedge clk)
+    //     if (reset) regD <= 0;
+    //     else if (loadD) regD <= outALU;
+    //     else regD <= regD;
 endmodule
 `default_nettype wire
