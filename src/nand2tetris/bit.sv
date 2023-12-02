@@ -1,6 +1,6 @@
 `default_nettype none
 
-module bit(
+module _bit(
     input wire clk,
     input wire in,
     input wire load, // 1 -> write

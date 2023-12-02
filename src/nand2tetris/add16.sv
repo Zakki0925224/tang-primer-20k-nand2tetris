@@ -6,7 +6,7 @@ module add16(
     output wire[15:0] out
 );
     wire[15:0] carry;
-    wire null;
+    wire _null;
 
     half_addr half_addr(
         .a(a[0]),
@@ -132,7 +132,7 @@ module add16(
         .b(b[15]),
         .c(carry[14]),
         .sum(out[15]),
-        .carry(null)
+        .carry(_null)
     );
 endmodule
 

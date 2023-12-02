@@ -6,7 +6,7 @@ module top(
     output wire txp,
     output wire[5:0] led
 );
-    `include "print.v"
+    `include "print.sv"
     assign print_clk = clk;
     assign txp = uart_txp;
 
