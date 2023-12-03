@@ -6,9 +6,9 @@ module top(
     output wire txp,
     output wire[5:0] led
 );
-    `include "print.sv"
-    assign print_clk = clk;
-    assign txp = uart_txp;
+    // `include "print.sv"s
+    // assign print_clk = clk;
+    // assign txp = uart_txp;
 
     reg[15:0] debug_pc_old = -1;
     wire[15:0] debug_pc, debug_address_m;
@@ -34,7 +34,7 @@ module top(
         //     `print(debug_pc, HEX);
         // end
         // else debug_pc_old <= debug_pc_old;
-        `print(debug_pc, HEX);
+        //`print(debug_pc, HEX);
     end
 
     assign led = ~mmio_led[5:0];
