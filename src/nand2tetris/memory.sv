@@ -1,3 +1,5 @@
+`default_nettype none
+
 module memory(
     input wire clk,
     input wire[15:0] in,
@@ -38,3 +40,5 @@ module memory(
     assign mmio_led = reg_mmio_led;
 
 endmodule
+
+`default_nettype wire

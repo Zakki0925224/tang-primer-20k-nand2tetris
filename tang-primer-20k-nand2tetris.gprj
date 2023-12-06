@@ -5,6 +5,7 @@
     <Version>5</Version>
     <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
     <FileList>
+        <File path="src/controller/uart.sv" type="file.verilog" enable="1"/>
         <File path="src/nand2tetris/add16.sv" type="file.verilog" enable="1"/>
         <File path="src/nand2tetris/alu.sv" type="file.verilog" enable="1"/>
         <File path="src/nand2tetris/and.sv" type="file.verilog" enable="1"/>
@@ -33,9 +34,7 @@
         <File path="src/nand2tetris/ram16k.sv" type="file.verilog" enable="1"/>
         <File path="src/nand2tetris/reg16.sv" type="file.verilog" enable="1"/>
         <File path="src/nand2tetris/xor.sv" type="file.verilog" enable="1"/>
-        <File path="src/timer.sv" type="file.verilog" enable="1"/>
         <File path="src/top.sv" type="file.verilog" enable="1"/>
-        <File path="src/uart.sv" type="file.verilog" enable="1"/>
         <File path="src/tang-primer-20k-nand2tetris.cst" type="file.cst" enable="1"/>
         <File path="src/tang-primer-20k-nand2tetris.sdc" type="file.sdc" enable="1"/>
     </FileList>
