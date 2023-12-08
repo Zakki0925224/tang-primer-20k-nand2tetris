@@ -9,7 +9,11 @@ module computer(
     output wire[15:0] debug_out_m,
     output wire debug_load_m,
 
-    output wire[15:0] mmio_led
+    output reg[15:0] mmio_led,
+
+    input reg[7:0] mmio_uart_data_in,
+    output reg[7:0] mmio_uart_data_out,
+    input reg mmio_uart_doorbell_flag
 );
     reg[15:0] inst;
     reg[15:0] inst_rom [0:32767]; // 32KB
@@ -43,7 +47,11 @@ module computer(
         .load(load_m),
         .out(in_m),
 
-        .mmio_led(mmio_led)
+        .mmio_led(mmio_led),
+
+        .mmio_uart_data_in(mmio_uart_data_in),
+        .mmio_uart_data_out(mmio_uart_data_out),
+        .mmio_uart_doorbell_flag(mmio_uart_doorbell_flag)
     );
 
     assign debug_pc = pc;

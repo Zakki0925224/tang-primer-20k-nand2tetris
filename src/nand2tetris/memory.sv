@@ -7,12 +7,14 @@ module memory(
     input wire load,
     output wire[15:0] out,
 
-    output wire[15:0] mmio_led
-);
-    reg[15:0] reg_mmio_led;
+    output reg[15:0] mmio_led,
 
+    input reg[7:0] mmio_uart_data_in,
+    output reg[7:0] mmio_uart_data_out,
+    input reg mmio_uart_doorbell_flag
+);
     wire ram_load;
-    wire[15:0] ram_out;
+    reg[15:0] ram_out;
 
     assign ram_load = (address[14] == 1'b0 && load);
 
@@ -26,18 +28,16 @@ module memory(
 
     // MMIO LED
     always @(posedge clk) begin
-        if (address == 16'h4000 && load)
-            reg_mmio_led <= in;
+        if (address == 16'h4000) begin
+            if (load)
+                mmio_led <= in;
+
+            else
+                ram_out <= mmio_led;
+        end
     end
 
-    mux16 mux16_out(
-        .a(ram_out),
-        .b(reg_mmio_led),
-        .sel(address[15]),
-        .out(out)
-    );
-
-    assign mmio_led = reg_mmio_led;
+    assign out = ram_out;
 
 endmodule
 

@@ -11,11 +11,19 @@ module top(
     wire[15:0] debug_inst, debug_out_m;
     wire debug_load_m;
 
-    wire[15:0] mmio_led;
+    reg[15:0] mmio_led = 0;
+
+    reg[7:0] mmio_uart_data_in;
+    reg[7:0] mmio_uart_data_out;
+    reg mmio_uart_doorbell_flag;
+
     uart uart_(
         .clk(clk),
         .rx(uart_rx),
-        .tx(uart_tx)
+        .tx(uart_tx),
+        .mmio_data_in(),
+        .mmio_data_out(),
+        .mmio_doorbell_flag()
     );
 
     computer computer_(

@@ -7,7 +7,11 @@ module uart
 (
     input wire clk,
     input wire rx,
-    output wire tx
+    output wire tx,
+
+    input reg[7:0] mmio_data_in,
+    output reg[7:0] mmio_data_out,
+    input reg mmio_doorbell_flag
 );
     localparam HALF_DELAY_WAIT = (DELAY_FRAMES / 2);
 
@@ -34,6 +38,14 @@ module uart
                     rx_state <= RX_STATE_START_BIT;
                     rx_cnt <= 1;
                     rx_bit_num <= 0;
+                end
+
+                // mmio
+                if (mmio_doorbell_flag) begin
+                    data_in <= mmio_data_in;
+                    rx_state <= RX_STATE_IDLE;
+                    byte_ready <= 1;
+                    mmio_doorbell_flag <= 0;
                 end
             end
 
@@ -154,6 +166,8 @@ module uart
             end
         endcase
     end
+
+    assign mmio_data_out = data_out;
 endmodule
 
 `default_nettype wire
