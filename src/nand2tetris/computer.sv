@@ -3,26 +3,33 @@
 module computer(
     input wire clk,
     input wire reset,
-    output wire[15:0] debug_pc,
-    output wire[15:0] debug_inst,
-    output wire[15:0] debug_address_m,
-    output wire[15:0] debug_out_m,
-    output wire debug_load_m,
+    output wire[15:0] pc,
+    output reg[15:0] inst,
+    output wire[15:0] address_m,
+    output wire[15:0] out_m,
+    output wire[15:0] in_m,
+    output wire load_m,
 
-    output reg[15:0] mmio_led,
-
-    input reg[7:0] mmio_uart_data_in,
-    output reg[7:0] mmio_uart_data_out,
-    input reg mmio_uart_doorbell_flag
+    output wire[5:0] led,
+    input wire uart_rx,
+    output wire uart_tx
 );
-    reg[15:0] inst;
+    wire[15:0] mem_out, mmio_out;
+
     reg[15:0] inst_rom [0:32767]; // 32KB
-    wire[15:0] out_m, in_m;
-    wire[15:0] pc, address_m;
-    wire load_m;
 
     initial begin
-        $readmemb("./rom/rom.hack", inst_rom);
+        //$readmemb("./rom/rom.hack", inst_rom);
+        inst_rom[0] = 16'b0000000001001000;
+        inst_rom[1] = 16'b1110110000010000;
+        inst_rom[2] = 16'b0100000000000001;
+        inst_rom[3] = 16'b1110001100001000;
+        inst_rom[4] = 16'b0000000001100101;
+        inst_rom[5] = 16'b1110110000010000;
+        inst_rom[6] = 16'b0100000000000001;
+        inst_rom[7] = 16'b1110001100001000;
+        inst_rom[8] = 15'b0000000000001001;
+        inst_rom[9] = 15'b1110101010000111;
     end
 
     always @(posedge clk) begin
@@ -45,20 +52,21 @@ module computer(
         .in(out_m),
         .address(address_m),
         .load(load_m),
-        .out(in_m),
-
-        .mmio_led(mmio_led),
-
-        .mmio_uart_data_in(mmio_uart_data_in),
-        .mmio_uart_data_out(mmio_uart_data_out),
-        .mmio_uart_doorbell_flag(mmio_uart_doorbell_flag)
+        .out(mem_out)
     );
 
-    assign debug_pc = pc;
-    assign debug_inst = inst;
-    assign debug_address_m = address_m;
-    assign debug_out_m = out_m;
-    assign debug_load_m = load_m;
+    ioport mmio(
+        .clk(clk),
+        .in(out_m),
+        .address(address_m),
+        .load(load_m),
+        .out(mmio_out),
+        .led(led),
+        .uart_rx(uart_rx),
+        .uart_tx(uart_tx)
+    );
+
+    assign in_m = address_m >= 16'h4000 ? mmio_out : mem_out;
 endmodule
 
 `default_nettype wire

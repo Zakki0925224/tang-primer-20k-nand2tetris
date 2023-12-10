@@ -16,14 +16,15 @@ module uart
     localparam HALF_DELAY_WAIT = (DELAY_FRAMES / 2);
 
     // receiver
-    enum {
+    typedef enum {
         RX_STATE_IDLE = 0,
         RX_STATE_START_BIT = 1,
         RX_STATE_READ_WAIT = 2,
         RX_STATE_READ = 3,
-        RX_STATE_STOP_BIT = 5
-    } rx_state = RX_STATE_IDLE;
+        RX_STATE_STOP_BIT = 4
+    } RX_STATE;
 
+    RX_STATE rx_state = RX_STATE_IDLE;
     reg[12:0] rx_cnt = 0;
     reg[2:0] rx_bit_num = 0;
     reg[7:0] data_in = 0;
@@ -45,7 +46,6 @@ module uart
                     data_in <= mmio_data_in;
                     rx_state <= RX_STATE_IDLE;
                     byte_ready <= 1;
-                    mmio_doorbell_flag <= 0;
                 end
             end
 
@@ -95,13 +95,14 @@ module uart
     end
 
     // transmitter
-    enum {
+    typedef enum {
         TX_STATE_IDLE = 0,
         TX_STATE_START_BIT = 1,
         TX_STATE_WRITE = 2,
         TX_STATE_STOP_BIT = 3
-    } tx_state = TX_STATE_IDLE;
+    } TX_STATE;
 
+    TX_STATE tx_state = TX_STATE_IDLE;
     reg[24:0] tx_cnt = 0;
     reg[7:0] data_out = 0;
     reg tx_pin_reg = 1;
@@ -116,6 +117,7 @@ module uart
                     tx_state <= TX_STATE_START_BIT;
                     tx_cnt <= 0;
                     data_out <= data_in;
+                    mmio_data_out <= data_in;
                 end
                 else begin
                     tx_pin_reg <= 1;
@@ -166,8 +168,6 @@ module uart
             end
         endcase
     end
-
-    assign mmio_data_out = data_out;
 endmodule
 
 `default_nettype wire
