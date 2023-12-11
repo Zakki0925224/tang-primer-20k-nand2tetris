@@ -10,7 +10,7 @@ module top(
 );
     wire[15:0] pc, address_m, out_m, in_m;
     wire load_m;
-    reg[15:0] inst;
+    reg[15:0] inst, debug_io_uart;
 
     computer computer_(
         .clk(clk),
@@ -24,7 +24,8 @@ module top(
 
         .led(led),
         .uart_rx(uart_rx),
-        .uart_tx(uart_tx)
+        .uart_tx(uart_tx),
+        .debug_io_uart(debug_io_uart)
     );
 endmodule
 

@@ -1,1 +1,1 @@
-`rom.hack` was assembled `mmio_led.asm` .
+`rom.hack` was assembled `mmio_uart.asm` .

@@ -9,9 +9,9 @@ module uart
     input wire rx,
     output wire tx,
 
-    input reg[7:0] mmio_data_in,
-    output reg[7:0] mmio_data_out,
-    input reg mmio_doorbell_flag
+    input wire[7:0] mmio_data_in,
+    output wire[7:0] mmio_data_out,
+    input wire mmio_update
 );
     localparam HALF_DELAY_WAIT = (DELAY_FRAMES / 2);
 
@@ -35,17 +35,11 @@ module uart
             RX_STATE_IDLE: begin
                 // reset
                 byte_ready <= 0;
-                if (rx == 0 && tx_state == TX_STATE_IDLE) begin
+
+                if (rx == 0) begin
                     rx_state <= RX_STATE_START_BIT;
                     rx_cnt <= 1;
                     rx_bit_num <= 0;
-                end
-
-                // mmio
-                if (mmio_doorbell_flag) begin
-                    data_in <= mmio_data_in;
-                    rx_state <= RX_STATE_IDLE;
-                    byte_ready <= 1;
                 end
             end
 
@@ -85,7 +79,7 @@ module uart
                 // end of read bits
                 rx_cnt <= rx_cnt + 1;
 
-                if ((rx_cnt + 1) == DELAY_FRAMES) begin
+                if ((rx_cnt + 1) == DELAY_FRAMES && tx_state == TX_STATE_IDLE) begin
                     rx_state <= RX_STATE_IDLE;
                     rx_cnt <= 0;
                     byte_ready <= 1;
@@ -105,6 +99,10 @@ module uart
     TX_STATE tx_state = TX_STATE_IDLE;
     reg[24:0] tx_cnt = 0;
     reg[7:0] data_out = 0;
+    assign mmio_data_out = data_out;
+
+    reg mmio_update_old = mmio_update;
+
     reg tx_pin_reg = 1;
     reg[2:0] tx_bit_num = 0;
 
@@ -113,11 +111,16 @@ module uart
     always @(posedge clk) begin
         case (tx_state)
             TX_STATE_IDLE: begin
-                if (byte_ready) begin
+                if (byte_ready && rx_state == RX_STATE_IDLE) begin
                     tx_state <= TX_STATE_START_BIT;
-                    tx_cnt <= 0;
                     data_out <= data_in;
-                    mmio_data_out <= data_in;
+                    tx_cnt <= 0;
+                end
+                else if (!byte_ready && mmio_update_old != mmio_update) begin
+                    tx_state <= TX_STATE_START_BIT;
+                    data_out <= mmio_data_in;
+                    tx_cnt <= 0;
+                    mmio_update_old <= mmio_update;
                 end
                 else begin
                     tx_pin_reg <= 1;
