@@ -5,7 +5,9 @@
     <Version>5</Version>
     <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
     <FileList>
+        <File path="src/controller/rgb_lcd.sv" type="file.verilog" enable="1"/>
         <File path="src/controller/uart.sv" type="file.verilog" enable="1"/>
+        <File path="src/generated/rgb_lcd_pll/rgb_lcd_pll.v" type="file.verilog" enable="1"/>
         <File path="src/nand2tetris/add16.sv" type="file.verilog" enable="1"/>
         <File path="src/nand2tetris/alu.sv" type="file.verilog" enable="1"/>
         <File path="src/nand2tetris/and.sv" type="file.verilog" enable="1"/>
