@@ -13,8 +13,15 @@ module computer(
     output wire[5:0] led,
     input wire uart_rx,
     output wire uart_tx,
+    output reg[15:0] debug_io_uart,
 
-    output reg[15:0] debug_io_uart
+    output wire lcd_dclk,
+    output wire lcd_de,
+    output wire lcd_hs,
+    output wire lcd_vs,
+    output wire[4:0] lcd_r,
+    output wire[5:0] lcd_g,
+    output wire[4:0] lcd_b
 );
     wire[15:0] mem_out, mmio_out;
 
@@ -69,7 +76,14 @@ module computer(
         .led(led),
         .uart_rx(uart_rx),
         .uart_tx(uart_tx),
-        .debug_io_uart(debug_io_uart)
+        .debug_io_uart(debug_io_uart),
+        .lcd_dclk(lcd_dclk),
+        .lcd_de(lcd_de),
+        .lcd_hs(lcd_hs),
+        .lcd_vs(lcd_vs),
+        .lcd_r(lcd_r),
+        .lcd_g(lcd_g),
+        .lcd_b(lcd_b)
     );
 
     assign in_m = address_m >= 16'h4000 ? mmio_out : mem_out;

@@ -1,5 +1,6 @@
 `default_nettype none
 
+// 480x272, 9MHz
 module rgb_lcd
 #(
     parameter H_ACTIVE = 16'd480,
