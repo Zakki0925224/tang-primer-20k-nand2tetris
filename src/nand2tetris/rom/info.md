@@ -1,1 +1,1 @@
-`rom.hack` was assembled `mmio_uart.asm` .
+`rom.hack` was assembled `vram.asm` .

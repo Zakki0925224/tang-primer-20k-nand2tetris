@@ -5,6 +5,7 @@
     <Version>5</Version>
     <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
     <FileList>
+        <File path="src/ascii_font.sv" type="file.verilog" enable="1"/>
         <File path="src/controller/rgb_lcd.sv" type="file.verilog" enable="1"/>
         <File path="src/controller/uart.sv" type="file.verilog" enable="1"/>
         <File path="src/generated/rgb_lcd_pll/rgb_lcd_pll.v" type="file.verilog" enable="1"/>

@@ -28,20 +28,7 @@ module computer(
     reg[15:0] inst_rom [0:32767]; // 32KB
 
     initial begin
-        //$readmemb("./rom/rom.hack", inst_rom);
-
-        inst_rom[0] = 16'b0000000001100001;
-        inst_rom[1] = 16'b1110110000010000;
-        inst_rom[2] = 16'b0100000000000001;
-        inst_rom[3] = 16'b1110001100001000;
-        inst_rom[4] = 16'b0000000001100010;
-        inst_rom[5] = 16'b1110110000010000;
-        inst_rom[6] = 16'b0100000000000001;
-        inst_rom[7] = 16'b1110001100001000;
-        inst_rom[8] = 16'b0000000001100011;
-        inst_rom[9] = 16'b1110110000010000;
-        inst_rom[10] = 16'b0100000000000001;
-        inst_rom[11] = 16'b1110001100001000;
+        $readmemb("./rom/rom.hack", inst_rom);
     end
 
     always @(posedge clk) begin
