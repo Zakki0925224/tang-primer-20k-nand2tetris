@@ -1,4 +1,4 @@
-@33
+@32
 D=A
 @R0
 M=D // ascii
@@ -21,6 +21,7 @@ M=D // max value
     @R0
     D=M
     @R1
+    A=M
     M=D
 
     // increment

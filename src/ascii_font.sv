@@ -50,7 +50,7 @@ module ascii_font(
         // '%'
         ascii_font[8 * 37 + 7] <= 16'h0000;
         ascii_font[8 * 37 + 6] <= 16'h0420;
-        ascii_font[8 * 37 + 5] <= 16'h0257;
+        ascii_font[8 * 37 + 5] <= 16'h0250;
         ascii_font[8 * 37 + 4] <= 16'h0920;
         ascii_font[8 * 37 + 3] <= 16'h1480;
         ascii_font[8 * 37 + 2] <= 16'h0840;
@@ -120,7 +120,7 @@ module ascii_font(
         // ','
         ascii_font[8 * 44 + 7] <= 16'h0000;
         ascii_font[8 * 44 + 6] <= 16'h0000;
-        ascii_font[8 * 44 + 5] <= 16'hb000;
+        ascii_font[8 * 44 + 5] <= 16'h5800;
         ascii_font[8 * 44 + 4] <= 16'h3800;
         ascii_font[8 * 44 + 3] <= 16'h0000;
         ascii_font[8 * 44 + 2] <= 16'h0000;
@@ -203,9 +203,9 @@ module ascii_font(
         ascii_font[8 * 52 + 5] <= 16'h0500;
         ascii_font[8 * 52 + 4] <= 16'h0480;
         ascii_font[8 * 52 + 3] <= 16'h0440;
-        ascii_font[8 * 52 + 0] <= 16'h1fe0;
-        ascii_font[8 * 52 + 2] <= 16'h0400;
-        ascii_font[8 * 52 + 1] <= 16'h0000;
+        ascii_font[8 * 52 + 2] <= 16'h1fe0;
+        ascii_font[8 * 52 + 1] <= 16'h0400;
+        ascii_font[8 * 52 + 0] <= 16'h0000;
 
         // '5'
         ascii_font[8 * 53 + 7] <= 16'h0000;
@@ -249,7 +249,7 @@ module ascii_font(
 
         // '9'
         ascii_font[8 * 57 + 7] <= 16'h0000;
-        ascii_font[8 * 57 + 6] <= 16'h01c0
+        ascii_font[8 * 57 + 6] <= 16'h01c0;
         ascii_font[8 * 57 + 5] <= 16'h1220;
         ascii_font[8 * 57 + 4] <= 16'h1220;
         ascii_font[8 * 57 + 3] <= 16'h0a20;
@@ -649,7 +649,7 @@ module ascii_font(
 
         // 'a'
         ascii_font[8 * 97 + 7] <= 16'h0000;
-        ascii_font[8 * 97 + 6] <= 16'h00f0;
+        ascii_font[8 * 97 + 6] <= 16'h0f00;
         ascii_font[8 * 97 + 5] <= 16'h1080;
         ascii_font[8 * 97 + 4] <= 16'h1080;
         ascii_font[8 * 97 + 3] <= 16'h0880;
@@ -659,7 +659,7 @@ module ascii_font(
 
         // 'b'
         ascii_font[8 * 98 + 7] <= 16'h0000;
-        ascii_font[8 * 98 + 6] <= 16'h1fe0;
+        ascii_font[8 * 98 + 6] <= 16'h1ff0;
         ascii_font[8 * 98 + 5] <= 16'h1080;
         ascii_font[8 * 98 + 4] <= 16'h1080;
         ascii_font[8 * 98 + 3] <= 16'h1080;
@@ -742,7 +742,7 @@ module ascii_font(
         ascii_font[8 * 106 + 6] <= 16'h0000;
         ascii_font[8 * 106 + 5] <= 16'h2000;
         ascii_font[8 * 106 + 4] <= 16'h4080;
-        ascii_font[8 * 106 + 3] <= 16'h3f80;
+        ascii_font[8 * 106 + 3] <= 16'h3fa0;
         ascii_font[8 * 106 + 2] <= 16'h0000;
         ascii_font[8 * 106 + 1] <= 16'h0000;
         ascii_font[8 * 106 + 0] <= 16'h0000;
@@ -929,8 +929,8 @@ module ascii_font(
 
         // '}'
         ascii_font[8 * 125 + 7] <= 16'h0000;
-        ascii_font[8 * 125 + 6] <= 16'h8010;
-        ascii_font[8 * 125 + 5] <= 16'h8010;
+        ascii_font[8 * 125 + 6] <= 16'h4010;
+        ascii_font[8 * 125 + 5] <= 16'h4010;
         ascii_font[8 * 125 + 4] <= 16'h3de0;
         ascii_font[8 * 125 + 3] <= 16'h0200;
         ascii_font[8 * 125 + 2] <= 16'h0200;
@@ -943,7 +943,7 @@ module ascii_font(
         ascii_font[8 * 126 + 5] <= 16'h0100;
         ascii_font[8 * 126 + 4] <= 16'h0200;
         ascii_font[8 * 126 + 3] <= 16'h0400;
-        ascii_font[8 * 126 + 2] <= 16'h3000;
+        ascii_font[8 * 126 + 2] <= 16'h0300;
         ascii_font[8 * 126 + 0] <= 16'h0000;
         ascii_font[8 * 126 + 1] <= 16'h0000;
     end
