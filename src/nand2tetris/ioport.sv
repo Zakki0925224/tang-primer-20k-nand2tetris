@@ -45,17 +45,58 @@ module ioport(
     parameter LCD_TEXT_HEIGHT = 16;
     parameter LCD_TEXT_WIDTH = 8;
     reg[15:0] lcd_text_vram[(LCD_HEIGHT / LCD_TEXT_HEIGHT) * (LCD_WIDTH / LCD_TEXT_WIDTH) - 1:0]; // 1020B
-    reg[9:0] lcd_text_vram_pos;
+    reg[9:0]  lcd_text_vram_pos;
     reg[15:0] lcd_text_vram_data;
+    reg[4:0] lcd_text_vram_bg_color_code, lcd_text_vram_fg_color_code;
+    reg[15:0] lcd_bg_rgb, lcd_fg_rgb;
     wire[9:0] lcd_x, lcd_y;
     reg[15:0] lcd_rgb_data;
 
     reg[15:0] ascii_font_data;
     reg[15:0] ascii_font_data_index;
     assign lcd_text_vram_pos = ((LCD_WIDTH / LCD_TEXT_WIDTH) * (lcd_y / LCD_TEXT_HEIGHT)) + (lcd_x / LCD_TEXT_WIDTH); // ok
+
     assign lcd_text_vram_data = lcd_text_vram[lcd_text_vram_pos];
+    assign lcd_text_vram_fg_color_code = lcd_text_vram_data >> 8;
+    assign lcd_text_vram_bg_color_code = lcd_text_vram_data >> 12;
+    assign lcd_bg_rgb = lcd_text_vram_bg_color_code == 4'h0 ? 16'h0000 : // black
+                        lcd_text_vram_bg_color_code == 4'h1 ? 16'h0014 : // blue
+                        lcd_text_vram_bg_color_code == 4'h2 ? 16'h0540 : // green
+                        lcd_text_vram_bg_color_code == 4'h3 ? 16'h0554 : // cyan
+                        lcd_text_vram_bg_color_code == 4'h4 ? 16'ha000 : // red
+                        lcd_text_vram_bg_color_code == 4'h5 ? 16'ha014 : // magenta
+                        lcd_text_vram_bg_color_code == 4'h6 ? 16'ha2a0 : // brown
+                        lcd_text_vram_bg_color_code == 4'h7 ? 16'ha554 : // light gray
+                        lcd_text_vram_bg_color_code == 4'h8 ? 16'h52aa : // dark gray
+                        lcd_text_vram_bg_color_code == 4'h9 ? 16'h52b0 : // light blue
+                        lcd_text_vram_bg_color_code == 4'ha ? 16'h57ea : // light green
+                        lcd_text_vram_bg_color_code == 4'hb ? 16'h57ff : // light cyan
+                        lcd_text_vram_bg_color_code == 4'hc ? 16'hfaaa : // light red
+                        lcd_text_vram_bg_color_code == 4'hd ? 16'hfabf : // light magenta
+                        lcd_text_vram_bg_color_code == 4'he ? 16'hffe0 : // yellow
+                        lcd_text_vram_bg_color_code == 4'hf ? 16'hffff : // white
+                        16'h0000;
+
+    assign lcd_fg_rgb = lcd_text_vram_fg_color_code == 4'h0 ? 16'h0000 : // black
+                        lcd_text_vram_fg_color_code == 4'h1 ? 16'h0014 : // blue
+                        lcd_text_vram_fg_color_code == 4'h2 ? 16'h0540 : // green
+                        lcd_text_vram_fg_color_code == 4'h3 ? 16'h0554 : // cyan
+                        lcd_text_vram_fg_color_code == 4'h4 ? 16'ha000 : // red
+                        lcd_text_vram_fg_color_code == 4'h5 ? 16'ha014 : // magenta
+                        lcd_text_vram_fg_color_code == 4'h6 ? 16'ha2a0 : // brown
+                        lcd_text_vram_fg_color_code == 4'h7 ? 16'ha554 : // light gray
+                        lcd_text_vram_fg_color_code == 4'h8 ? 16'h52aa : // dark gray
+                        lcd_text_vram_fg_color_code == 4'h9 ? 16'h52b0 : // light blue
+                        lcd_text_vram_fg_color_code == 4'ha ? 16'h57ea : // light green
+                        lcd_text_vram_fg_color_code == 4'hb ? 16'h57ff : // light cyan
+                        lcd_text_vram_fg_color_code == 4'hc ? 16'hfaaa : // light red
+                        lcd_text_vram_fg_color_code == 4'hd ? 16'hfabf : // light magenta
+                        lcd_text_vram_fg_color_code == 4'he ? 16'hffe0 : // yellow
+                        lcd_text_vram_fg_color_code == 4'hf ? 16'hffff : // white
+                        16'h0000;
+
     assign ascii_font_data_index = (LCD_TEXT_WIDTH * lcd_text_vram_data[7:0]) + (LCD_TEXT_WIDTH - (lcd_x % LCD_TEXT_WIDTH) - 1);
-    assign lcd_rgb_data = (lcd_text_vram_data[7:0] != 0) && ((ascii_font_data >> (lcd_y % LCD_TEXT_HEIGHT)) & 16'h1) ? 16'B10000_000000_00000 : 16'B00100_000000_00000;
+    assign lcd_rgb_data = (lcd_text_vram_data[7:0] != 0) && ((ascii_font_data >> (lcd_y % LCD_TEXT_HEIGHT)) & 16'h1) ? lcd_fg_rgb : lcd_bg_rgb;
     assign lcd_r = lcd_rgb_data[15:11];
     assign lcd_g = lcd_rgb_data[10:5];
     assign lcd_b = lcd_rgb_data[4:0];

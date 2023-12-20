@@ -1,4 +1,4 @@
-@32
+@11808 // BG: green, FG: yellow
 D=A
 @R0
 M=D // ascii
@@ -8,10 +8,10 @@ D=A
 @R1
 M=D // vram address
 
-@126
+@16480
 D=A
 @R2
-M=D // max value
+M=D // max vram address
 
 @LOOP
 0;JMP
@@ -30,7 +30,7 @@ M=D // max value
     @R1
     M=M+1
 
-    @R0
+    @R1
     D=M
     @R2
     D=D-M
